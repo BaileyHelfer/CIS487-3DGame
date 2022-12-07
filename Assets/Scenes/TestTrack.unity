@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 1237303379}
   distance: 6.4
-  height: 1.4
+  height: 3
   Rotation_Damping: 3
   Height_Damping: 2
   Zoom_Ratio: 0.5
