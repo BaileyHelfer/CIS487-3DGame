@@ -16,7 +16,7 @@ public class EndLevel : MonoBehaviour
         if (other.gameObject.CompareTag("FinishLine"))
         {
             if (hitCheckpoint) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("MainMenu");
                 print("checkpointswork");
             }
         }
