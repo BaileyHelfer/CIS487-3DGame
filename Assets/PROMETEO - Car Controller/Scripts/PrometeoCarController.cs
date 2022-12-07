@@ -17,9 +17,28 @@ using UnityEngine.UI;
 public class PrometeoCarController : MonoBehaviour
 {
 
+    public bool hitCheckpoint = false;
+
+    private void OnTriggerEnter3D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint1"))
+        {
+
+            hitCheckpoint = true;
+        }
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+
+            Debug.Log("Exit");
+            Application.Quit();
+        }
+    }
+
+ 
+
     //CAR SETUP
 
-      [Space(20)]
+    [Space(20)]
       //[Header("CAR SETUP")]
       [Space(10)]
       [Range(20, 190)]
