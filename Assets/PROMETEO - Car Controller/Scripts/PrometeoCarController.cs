@@ -16,7 +16,26 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
+   //public float boostTimer=0.0;
+    //public float boostCooldown=10;
+   // public float boostDuration=3.0;
 
+
+  private void Boost()
+    {
+        accelerationMultiplier = 10;
+        Debug.Log("boostworks acceleration is  "+accelerationMultiplier);
+     
+        
+
+      //  Invoke("ResetBoost", boostDuration);
+    }
+
+    private void ResetBoost()
+    {
+
+        accelerationMultiplier = 6; ;
+    }
     public bool hitCheckpoint = false;
 
     private void OnTriggerEnter3D(Collider2D other)
@@ -383,10 +402,14 @@ public class PrometeoCarController : MonoBehaviour
         }
 
       }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Boost();
+          // boostTimer = Time.time + boostCooldown;
+        }
 
-
-      // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
-      AnimateWheelMeshes();
+        // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
+        AnimateWheelMeshes();
 
     }
 
