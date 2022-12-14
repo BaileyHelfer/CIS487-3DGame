@@ -16,9 +16,7 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
-   //public float boostTimer=0.0;
-    //public float boostCooldown=10;
-   // public float boostDuration=3.0;
+  
    public bool boosting = false;
     public bool boostCooldown = false;
     public bool firstClick = true;
@@ -37,7 +35,7 @@ public class PrometeoCarController : MonoBehaviour
         }
         
 
-      //  Invoke("ResetBoost", boostDuration);
+      
     }
 
     private void ResetBoost()
@@ -417,6 +415,8 @@ public class PrometeoCarController : MonoBehaviour
             {
                 Debug.Log("BOOSTING");
                 accelerationMultiplier = 1000;
+                RLWParticleSystem.Play();
+                RRWParticleSystem.Play();
             }
             else
             {
@@ -437,6 +437,8 @@ public class PrometeoCarController : MonoBehaviour
                 }
                 else
                 {
+                    RLWParticleSystem.Stop();
+                    RRWParticleSystem.Stop();
                     accelerationMultiplier = 6;
                     boostCooldown = false;
                 }
