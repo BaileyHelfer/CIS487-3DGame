@@ -10,7 +10,7 @@ public class EndLevel : MonoBehaviour
 
         if (other.gameObject.CompareTag("Checkpoint1"))
         {
-
+            print("checkpointswork");
             hitCheckpoint = true;
         }
         if (other.gameObject.CompareTag("FinishLine"))
