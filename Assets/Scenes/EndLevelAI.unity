@@ -1409,6 +1409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1270941612}
+  goText: {fileID: 0}
 --- !u!114 &1270941615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,7 +2135,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -11.199219, y: -12.221329, z: -89.33545, w: -28.516357}
+  m_margin: {x: -11.199219, y: -12.221329, z: -249.26172, w: -28.516357}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
