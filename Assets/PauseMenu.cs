@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject goText;
+
     void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -18,6 +20,11 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Destroy(goText);
         }
     }
 
