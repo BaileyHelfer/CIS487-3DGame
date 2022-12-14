@@ -30,22 +30,34 @@ public class BoostCooldown : MonoBehaviour
                 {
                     fullBostImg.fillAmount = 0.85f;
                 }
-                fullBostImg.fillAmount -= 1 / 5f * Time.deltaTime;
+                fullBostImg.fillAmount -= 0.85f / 5f * Time.deltaTime;
 
             }
             else
             {
-                if (fullBostImg.fillAmount < 1)
-                {
-                    fullBostImg.fillAmount += 1 / 12f * Time.deltaTime;
-                    boostCooldown = true;
-                    endBoost = Time.time;
-                    firstClick = true;
-                }
-                else
-                {
-                    boosting = false;
-                }
+ 
+                //if (fullBostImg.fillAmount >= 80)
+                //{
+                //    fullBostImg.fillAmount = 1f;
+                //}
+                
+                boostCooldown = true;
+                endBoost = Time.time;
+                firstClick = true;
+                boosting = false;
+
+            }
+        }
+        if (boostCooldown)
+        {
+            if (fullBostImg.fillAmount > 0.80f)
+            {
+                fullBostImg.fillAmount = 1f;
+            }
+            fullBostImg.fillAmount += 0.80f / 10f * Time.deltaTime;
+            if (Time.time - endBoost > 10f)
+            {
+                boostCooldown = false;
             }
         }
 
@@ -64,9 +76,9 @@ public class BoostCooldown : MonoBehaviour
             }
             if (firstClick)
             {
+                startBoost = Time.time;
                 boosting = true;
                 firstClick = false;
-                startBoost = Time.time;
             }
         }
     }
