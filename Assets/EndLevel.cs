@@ -13,10 +13,20 @@ public class EndLevel : MonoBehaviour
             print("checkpointswork");
             hitCheckpoint = true;
         }
+       
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            Debug.Log("HIT FINISH LINE");
             if (hitCheckpoint) {
-                SceneManager.LoadScene("MainMenu");
+                if (this.gameObject.tag == "AICar")
+                {
+                    SceneManager.LoadScene("EndLevelAI");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndLevelPlayer");
+                }
+                //SceneManager.LoadScene("MainMenu");
                 print("checkpointswork");
             }
         }
