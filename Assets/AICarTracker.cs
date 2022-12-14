@@ -12,7 +12,6 @@ public class AICarTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(markers[MarkTracker]);
         TheMarker.transform.position = markers[MarkTracker].transform.position;
     }
 

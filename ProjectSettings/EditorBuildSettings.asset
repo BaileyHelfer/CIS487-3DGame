@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestTrack.unity
     guid: 6d873a21a011b8e448ef5f53a88bf219
+  - enabled: 1
+    path: Assets/Scenes/EndLevelAI.unity
+    guid: 4f980365a5e44734a8d7619644b1e3b0
+  - enabled: 1
+    path: Assets/Scenes/EndLevelPlayer.unity
+    guid: 6ae7eb4a454924f4e9b1ecd370c8a63f
   m_configObjects: {}

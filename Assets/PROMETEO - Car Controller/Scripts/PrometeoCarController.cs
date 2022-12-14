@@ -421,6 +421,9 @@ public class PrometeoCarController : MonoBehaviour
             }
             else
             {
+                LeftSystemBoost.Stop();
+                RightSystemBoost.Stop();
+                accelerationMultiplier = 6;
                 firstClick = true;
                 boosting = false;
                 boostCooldown = true;
@@ -438,9 +441,6 @@ public class PrometeoCarController : MonoBehaviour
                 }
                 else
                 {
-                    LeftSystemBoost.Stop();
-                    RightSystemBoost.Stop();
-                    accelerationMultiplier = 6;
                     boostCooldown = false;
                 }
             }
