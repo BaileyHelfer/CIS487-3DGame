@@ -19,13 +19,22 @@ public class PrometeoCarController : MonoBehaviour
    //public float boostTimer=0.0;
     //public float boostCooldown=10;
    // public float boostDuration=3.0;
-
+   public bool boosting = false;
+    public bool boostCooldown = false;
+    public bool firstClick = true;
+    public float startBoost;
+    public float endBoost;  
+ 
 
   private void Boost()
     {
         accelerationMultiplier = 10;
         Debug.Log("boostworks acceleration is  "+accelerationMultiplier);
-     
+        float temp = Time.time;
+        while(Time.time - temp < 10f)
+        {
+            Debug.Log("In loop");
+        }
         
 
       //  Invoke("ResetBoost", boostDuration);
@@ -402,10 +411,42 @@ public class PrometeoCarController : MonoBehaviour
         }
 
       }
+        if (boosting)
+        {
+            if (Time.time - startBoost < 5f)
+            {
+                Debug.Log("BOOSTING");
+                accelerationMultiplier = 1000;
+            }
+            else
+            {
+                firstClick = true;
+                boosting = false;
+                boostCooldown = true;
+                endBoost = Time.time;
+            }
+        }    
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Boost();
-          // boostTimer = Time.time + boostCooldown;
+            if (boostCooldown)
+            {
+                if (Time.time - endBoost < 10f)
+                {
+                    Debug.Log("COOLDOWN");
+                    return;
+                }
+                else
+                {
+                    accelerationMultiplier = 6;
+                    boostCooldown = false;
+                }
+            }
+            if (firstClick)
+            {
+                boosting = true;
+                firstClick = false;
+                startBoost = Time.time;
+            }
         }
 
         // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
