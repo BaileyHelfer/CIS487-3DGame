@@ -46,7 +46,9 @@ public class PrometeoEditor : Editor{
   private SerializedProperty useEffects;
   private SerializedProperty RLWParticleSystem;
   private SerializedProperty RRWParticleSystem;
-  private SerializedProperty RLWTireSkid;
+    private SerializedProperty LeftSystemBoost;
+    private SerializedProperty RightSystemBoost;
+    private SerializedProperty RLWTireSkid;
   private SerializedProperty RRWTireSkid;
   //
   //
@@ -101,6 +103,8 @@ public class PrometeoEditor : Editor{
     useEffects = SO.FindProperty("useEffects");
     RLWParticleSystem = SO.FindProperty("RLWParticleSystem");
     RRWParticleSystem = SO.FindProperty("RRWParticleSystem");
+    LeftSystemBoost = SO.FindProperty("LeftSystemBoost");
+    RightSystemBoost = SO.FindProperty("RightSystemBoost");
     RLWTireSkid = SO.FindProperty("RLWTireSkid");
     RRWTireSkid = SO.FindProperty("RRWTireSkid");
 
@@ -176,10 +180,13 @@ public class PrometeoEditor : Editor{
     GUILayout.Space(10);
 
     useEffects.boolValue = EditorGUILayout.BeginToggleGroup("Use effects (particle systems)?", useEffects.boolValue);
-    GUILayout.Space(10);
+    GUILayout.Space(20);
 
         EditorGUILayout.PropertyField(RLWParticleSystem, new GUIContent("Rear Left Particle System: "));
         EditorGUILayout.PropertyField(RRWParticleSystem, new GUIContent("Rear Right Particle System: "));
+
+        EditorGUILayout.PropertyField(LeftSystemBoost, new GUIContent("Left System Boost: "));
+        EditorGUILayout.PropertyField(RightSystemBoost, new GUIContent("Right System Boost: "));
 
         EditorGUILayout.PropertyField(RLWTireSkid, new GUIContent("Rear Left Trail Renderer: "));
         EditorGUILayout.PropertyField(RRWTireSkid, new GUIContent("Rear Right Trail Renderer: "));
