@@ -16,7 +16,33 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
+  
+   public bool boosting = false;
+    public bool boostCooldown = false;
+    public bool firstClick = true;
+    public float startBoost;
+    public float endBoost;  
+ 
 
+  private void Boost()
+    {
+        accelerationMultiplier = 10;
+        Debug.Log("boostworks acceleration is  "+accelerationMultiplier);
+        float temp = Time.time;
+        while(Time.time - temp < 10f)
+        {
+            Debug.Log("In loop");
+        }
+        
+
+      
+    }
+
+    private void ResetBoost()
+    {
+
+        accelerationMultiplier = 6; ;
+    }
     public bool hitCheckpoint = false;
 
     private void OnTriggerEnter3D(Collider2D other)
@@ -97,8 +123,9 @@ public class PrometeoCarController : MonoBehaviour
       // The following particle systems are used as tire smoke when the car drifts.
       public ParticleSystem RLWParticleSystem;
       public ParticleSystem RRWParticleSystem;
-
-      [Space(10)]
+      public ParticleSystem LeftSystemBoost;
+      public ParticleSystem RightSystemBoost;
+    [Space(10)]
       // The following trail renderers are used as tire skids when the car loses traction.
       public TrailRenderer RLWTireSkid;
       public TrailRenderer RRWTireSkid;
@@ -383,10 +410,50 @@ public class PrometeoCarController : MonoBehaviour
         }
 
       }
+        if (boosting)
+        {
+            if (Time.time - startBoost < 5f)
+            {
+                Debug.Log("BOOSTING");
+                accelerationMultiplier = 1000;
+                LeftSystemBoost.Play();
+                RightSystemBoost.Play();
+            }
+            else
+            {
+                firstClick = true;
+                boosting = false;
+                boostCooldown = true;
+                endBoost = Time.time;
+            }
+        }    
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (boostCooldown)
+            {
+                if (Time.time - endBoost < 10f)
+                {
+                    Debug.Log("COOLDOWN");
+                    return;
+                }
+                else
+                {
+                    LeftSystemBoost.Stop();
+                    RightSystemBoost.Stop();
+                    accelerationMultiplier = 6;
+                    boostCooldown = false;
+                }
+            }
+            if (firstClick)
+            {
+                boosting = true;
+                firstClick = false;
+                startBoost = Time.time;
+            }
+        }
 
-
-      // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
-      AnimateWheelMeshes();
+        // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
+        AnimateWheelMeshes();
 
     }
 
